@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Vallentin's Untitled Infinite Survival Game</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="referrer" content="always" />
+    <meta name="author" content="Christian Vallentin" />
+
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div style="padding: 32px; text-align: center;">
+        <canvas id="canvas" width="100" height="400" style="border: 1px solid rgba(255, 0, 0, 0.25);"></canvas>
+
+        <div class="center">
+            <div class="controls">
+                <button id="btn-generate">Generate</button>
+                <input type="number" id="zombie-count" value="10" min="1" required />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function lerp(min, max, t) {
+            return min * (1.0 - t) + max * t;
+        }
+
+        const numZombieCount = document.getElementById("zombie-count");
+
+        const imgZombie = new Image();
+        imgZombie.src = "/img/zombie.png";
+
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.imageSmoothingEnabled = false;
+
+        function draw() {
+            const [w, h] = [canvas.width, canvas.height];
+            ctx.clearRect(0, 0, w, h);
+
+            const zombieWidth = imgZombie.width;
+            const zombieHeight = imgZombie.height;
+
+            const [MIN_X, MAX_X] = [-zombieWidth, w * 0.75];
+            const [MIN_Y, MAX_Y] = [0, h];
+            const MIN_DIST = 5;
+
+            let zombieCount = parseInt(numZombieCount.value);
+            const zombies = [];
+
+            for (let i = 0; i < zombieCount; ++i) {
+                let x = Math.floor(lerp(MIN_X, MAX_X, Math.random() * Math.random()));
+                let y = Math.floor(lerp(MIN_Y, MAX_Y, Math.random()));
+
+                let tooClose = zombies.findIndex((pos) => {
+                    let [zx, zy] = pos;
+                    let dx = zx - x;
+                    let dy = zy - y;
+                    let sqr_dist = dx * dx + dy * dy
+                    return sqr_dist <= (MIN_DIST * MIN_DIST);
+                });
+                if (tooClose !== -1) {
+                    continue;
+                }
+
+                zombies.push([x, y]);
+
+                // The character intersects with the bottom edge, so a copy is added to the top
+                // of the canvas, to ensure that the final image is tileable vertically
+                if ((y + zombieHeight) > h) {
+                    y -= h;
+                    zombies.push([x, y]);
+                }
+            }
+
+            zombies.sort((a, b) => {
+                let [x1, y1] = a;
+                let [x2, y2] = b;
+
+                if (y1 == y2) {
+                    return x1 - x2;
+                } else {
+                    return y1 - y2;
+                }
+            })
+
+            for (let [x, y] of zombies) {
+                ctx.drawImage(imgZombie, x, y);
+            }
+        }
+
+        imgZombie.onload = function () {
+            draw();
+        };
+
+        const btnGenerate = document.getElementById("btn-generate");
+        btnGenerate.addEventListener("click", draw);
+    </script>
+</body>
+</html>

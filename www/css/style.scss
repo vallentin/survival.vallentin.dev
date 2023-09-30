@@ -85,22 +85,36 @@ video {
 
     text-align: center;
 
+    // Funnily enough, Firefox, Safari and even Internet Explorer supports
+    // background-position two-value syntax with edge offsets.
+    // While Chrome, Edge, Opera, and Samsung Internet does not.
+    // Reference: https://caniuse.com/mdn-css_properties_background-position-x_two_value_syntax
+
     // The pixel sizes are relative to the width of
     // the bg-{left,right}.png which both has a 500px width
-    --bg-pos-x: 0px;
+    // --bg-pos-x: 0px;
+    --bg-lhs-pos-x: 0px;
+    --bg-rhs-pos-x: 100%;
     @media screen and (max-width: 1825px) {
-        --bg-pos-x: -100px;
+        // --bg-pos-x: -100px;
+        --bg-lhs-pos-x: -100px;
+        --bg-rhs-pos-x: calc(100% + 100px);
     }
     @media screen and (max-width: 1625px) {
-        --bg-pos-x: -200px;
+        // --bg-pos-x: -200px;
+        --bg-lhs-pos-x: -200px;
+        --bg-rhs-pos-x: calc(100% + 200px);
     }
     @media screen and (max-width: 1425px) {
-        --bg-pos-x: -300px;
+        // --bg-pos-x: -300px;
+        --bg-lhs-pos-x: -300px;
+        --bg-rhs-pos-x: calc(100% + 300px);
     }
 
     background-image: url("/img/bg-left.png"), url("/img/bg-right.png");
     background-position: left top, right 500px;
-    background-position-x: left var(--bg-pos-x), right var(--bg-pos-x);
+    background-position: var(--bg-lhs-pos-x) top, var(--bg-rhs-pos-x) 500px;
+    // background-position-x: left var(--bg-pos-x), right var(--bg-pos-x);
     background-repeat: repeat-y, repeat-y;
     image-rendering: pixelated;
     transition: background-position 500ms ease;

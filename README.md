@@ -1,3 +1,10 @@
+<div align="center">
+    <picture>
+        <source srcset="www/img/player.gif" />
+        <img src="www/img/player.webp" />
+    </picture>
+</div>
+
 # Website for Vallentin's Untitled Infinite Survival Game
 
 Visit [survival.vallentin.dev](https://survival.vallentin.dev) for the online version.

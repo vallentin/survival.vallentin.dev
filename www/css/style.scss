@@ -95,20 +95,14 @@ video {
     // --bg-pos-x: 0px;
     --bg-lhs-pos-x: 0px;
     --bg-rhs-pos-x: 100%;
-    @media screen and (max-width: 1825px) {
-        // --bg-pos-x: -100px;
-        --bg-lhs-pos-x: -100px;
-        --bg-rhs-pos-x: calc(100% + 100px);
-    }
-    @media screen and (max-width: 1625px) {
-        // --bg-pos-x: -200px;
-        --bg-lhs-pos-x: -200px;
-        --bg-rhs-pos-x: calc(100% + 200px);
-    }
-    @media screen and (max-width: 1425px) {
-        // --bg-pos-x: -300px;
-        --bg-lhs-pos-x: -300px;
-        --bg-rhs-pos-x: calc(100% + 300px);
+
+    $sizes: 1825px 50px, 1725px 100px, 1625px 150px, 1525px 200px, 1425px 250px, 1325px 300px;
+
+    @each $max-width, $offset in $sizes {
+        @media screen and (max-width: $max-width) {
+            --bg-lhs-pos-x: -#{$offset};
+            --bg-rhs-pos-x: calc(100% + #{$offset});
+        }
     }
 
     background-image: url("/img/bg-left.png"), url("/img/bg-right.png");

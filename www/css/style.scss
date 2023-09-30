@@ -176,7 +176,6 @@ video {
         gap: 0.5rem;
 
         .description {
-            margin-bottom: 1rem;
             padding: 0 0.5rem;
 
             font-size: 1.2rem;
@@ -184,6 +183,8 @@ video {
         }
 
         .media {
+            margin-bottom: 1rem;
+
             img,
             video {
                 filter: drop-shadow(0 0 0.5rem #000);
@@ -216,7 +217,7 @@ video {
                 margin-left: -96px;
                 margin-right: -96px;
 
-                order: 1 !important;
+                order: -1;
 
                 img,
                 video {

@@ -1,6 +1,9 @@
 /static/
+/target
 
 node_modules/
 
 .env
 deploy.tar.gz
+
+/www/index.html

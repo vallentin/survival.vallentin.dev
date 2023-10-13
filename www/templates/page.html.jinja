@@ -1,0 +1,17 @@
+{% extends "base.html.jinja" %}
+{% block title %}
+    {% match self.title %}
+        {% when Some with (title) %}
+            {{ title }} &middot; {% call super() -%}
+        {% else %}
+            {% call super() -%}
+    {% endmatch %}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="content">
+            {% include "partials/header.html.jinja" %}
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

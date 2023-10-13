@@ -13,8 +13,8 @@ fi
 echo "Cleaning..."
 rm -rf static
 
-echo "Baking..."
-npm run bake
+echo "Building..."
+npm run build
 
 echo "Packing..."
 tar -v -czf deploy.tar.gz \

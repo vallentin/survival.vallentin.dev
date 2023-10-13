@@ -1,10 +1,11 @@
 {
   "scripts": {
+    "bake": "cargo run --release",
     "css": "node-sass --output-style compressed -o static/css www/css/style.scss",
     "html": "html-minifier --output-dir static --input-dir www --file-ext html --collapse-whitespace --conservative-collapse --keep-closing-slash --remove-empty-attributes --remove-comments",
     "img": "copyfiles --verbose -u 2 www/img/**/*.{png,gif,webp,ico} static/img/",
     "vid": "copyfiles --verbose -u 2 www/vid/**/*.mp4 static/vid/",
-    "bake": "npm run css && npm run html && npm run img && npm run vid",
+    "build": "npm run bake && npm run css && npm run html && npm run img && npm run vid",
     "localhost": "npx servor static --reload --browse"
   },
   "devDependencies": {

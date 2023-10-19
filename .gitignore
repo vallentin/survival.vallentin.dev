@@ -6,4 +6,5 @@ node_modules/
 .env
 deploy.tar.gz
 
+/www/blog/
 /www/index.html

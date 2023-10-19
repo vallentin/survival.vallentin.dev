@@ -1,0 +1,10 @@
+{% extends "page.html.jinja" %}
+{% block content %}
+    <div class="post">
+        <h1>{{ self.post.meta.title }}</h1>
+
+        {{ self.post.render()|safe }}
+    </div>
+
+    <p class="text"><a href="/blog">See all posts</a></p>
+{% endblock %}

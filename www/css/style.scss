@@ -67,14 +67,17 @@ em {
     font-style: italic;
 }
 
-img {
+img,
+video {
+    width: auto;
+    height: auto;
     max-width: 100%;
-
-    image-rendering: pixelated;
+    margin: 0 auto 1rem;
+    display: block;
 }
 
-video {
-    max-width: 100%;
+img {
+    image-rendering: pixelated;
 }
 
 .container {

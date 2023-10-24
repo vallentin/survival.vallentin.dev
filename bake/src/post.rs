@@ -21,6 +21,8 @@ pub struct PostMeta {
     pub hidden: bool,
     #[serde(default)]
     pub pinned: bool,
+    #[serde(default)]
+    pub draft: bool,
 }
 
 #[derive(Clone, Debug)]
@@ -62,6 +64,12 @@ impl Post {
     #[inline]
     pub fn render(&self) -> String {
         md::render(&self.md)
+    }
+
+    /// Returns `true` if the post should be visible on any listings.
+    #[inline]
+    pub fn is_visible(&self) -> bool {
+        !self.meta.hidden && !self.meta.draft
     }
 
     pub fn sort_posts(posts: &mut [Self]) {

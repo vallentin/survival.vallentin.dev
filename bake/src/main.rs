@@ -44,14 +44,15 @@ fn try_main() -> Result<(), Box<dyn error::Error>> {
         return Err("bake must only be executed within the workspace directory".into());
     }
 
-    let posts = read_posts()?;
-
-    render_index_page(&posts)?;
-    render_blog_page(&posts)?;
-
+    let mut posts = read_posts()?;
     for post in &posts {
         render_post_page(&post)?;
     }
+
+    posts.retain(Post::is_visible);
+
+    render_index_page(&posts)?;
+    render_blog_page(&posts)?;
 
     Ok(())
 }

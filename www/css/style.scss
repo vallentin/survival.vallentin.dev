@@ -278,7 +278,7 @@ img {
                 .dots {
                     width: 100%;
 
-                    border: 0px dotted #252628;
+                    border: 0 dotted #252628;
                     border-bottom-width: 3px;
 
                     @include small-screen {
@@ -308,6 +308,51 @@ img {
 
         @include small-screen {
             padding: 0;
+
+            font-size: 1rem;
+        }
+
+        .post-title {
+            margin-bottom: 1rem;
+
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1.25;
+            text-align: center;
+
+            @include small-screen {
+                font-size: 1.5rem;
+            }
+        }
+
+        .post-date {
+            margin-bottom: 2.5rem;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+
+            font-size: 1rem;
+
+            @include small-screen {
+                gap: 0.5rem;
+
+                font-size: 0.75rem;
+            }
+
+            .dots {
+                flex: 1;
+
+                border: 0 dotted #252628;
+                border-bottom-width: 3px;
+            }
+
+            time {
+                flex: none;
+
+                color: #7c7f83;
+            }
         }
 
         h1:first-child {

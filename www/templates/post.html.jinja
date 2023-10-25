@@ -1,7 +1,15 @@
 {% extends "page.html.jinja" %}
 {% block content %}
     <div class="post">
-        <h1>{{ self.post.meta.title }}</h1>
+        <div class="post-title">{{ post.meta.title }}</div>
+        <div class="post-date">
+            <div class="dots"></div>
+            {% let published = post.meta.published.format("%Y-%m-%d") %}
+            <time datetime="{{ published }}">
+                {{ post.meta.published.format("%b %d, %Y") }}
+            </time>
+            <div class="dots"></div>
+        </div>
 
         {{ self.post.render()|safe }}
     </div>

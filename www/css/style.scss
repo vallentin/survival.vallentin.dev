@@ -244,13 +244,17 @@ img {
         margin-bottom: 2.5rem;
 
         ul {
-            width: 80%;
             max-width: 70%;
             margin: 1.5rem auto;
 
             display: flex;
             flex-direction: column;
             gap: 1rem;
+
+            @include small-screen {
+                max-width: 100%;
+                margin: 1rem auto;
+            }
 
             li {
                 display: flex;
@@ -262,6 +266,11 @@ img {
                 // grid-template-columns: auto 1fr auto;
                 // grid-template-columns: max-content 1fr max-content;
 
+                @include small-screen {
+                    flex-direction: column;
+                    gap: 0.25rem;
+                }
+
                 a {
                     flex: none;
                 }
@@ -271,12 +280,20 @@ img {
 
                     border: 0px dotted #252628;
                     border-bottom-width: 3px;
+
+                    @include small-screen {
+                        display: none;
+                    }
                 }
 
                 time {
                     flex: none;
 
                     color: #7c7f83;
+
+                    @include small-screen {
+                        font-size: 0.75rem;
+                    }
                 }
             }
         }

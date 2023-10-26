@@ -1,7 +1,9 @@
-use std::iter::FusedIterator;
+use std::collections::VecDeque;
+use std::iter::{self, FusedIterator};
 
+use itertools::Itertools;
 use matter::matter;
-use pulldown_cmark::{escape, html, Event, Options, Parser, Tag};
+use pulldown_cmark::{escape, html, CowStr, Event, Options, Parser, Tag};
 
 pub fn split_front_matter<'a>(contents: &'a str) -> (Option<&'a str>, &str) {
     match matter(contents) {
@@ -18,11 +20,48 @@ pub fn render(md: &str) -> String {
     opt.insert(Options::ENABLE_TASKLISTS);
 
     let parser = Parser::new_ext(md, opt);
+    let parser = p_add_has_img(parser);
     let parser = img_to_video(parser);
 
     let mut html = String::new();
     html::push_html(&mut html, parser);
     html
+}
+
+// Needed until the `:has()` selector is better supported
+fn p_add_has_img<'a, I>(events: I) -> impl Iterator<Item = Event<'a>> + FusedIterator
+where
+    I: Iterator<Item = Event<'a>> + FusedIterator,
+{
+    let mut events = events.peekable();
+    let mut paragraph = VecDeque::new();
+
+    iter::from_fn(move || {
+        if let Some(evt) = paragraph.pop_front() {
+            return Some(evt);
+        }
+
+        if let Some(evt) = events.next_if(|evt| !matches!(evt, Event::Start(Tag::Paragraph))) {
+            return Some(evt);
+        }
+        paragraph.push_back(events.next()?);
+        paragraph
+            .extend(events.take_while_inclusive(|evt| !matches!(evt, Event::End(Tag::Paragraph))));
+
+        assert_eq!(paragraph.front(), Some(&Event::Start(Tag::Paragraph)));
+        assert_eq!(paragraph.back(), Some(&Event::End(Tag::Paragraph)));
+
+        if paragraph
+            .iter()
+            .any(|evt| matches!(evt, Event::Start(Tag::Image(..))))
+        {
+            paragraph.pop_front();
+            paragraph.push_front(Event::Html(CowStr::Borrowed("<p class=\"has-img\">")))
+        }
+
+        paragraph.pop_front()
+    })
+    .fuse()
 }
 
 fn img_to_video<'a, I>(events: I) -> impl Iterator<Item = Event<'a>> + FusedIterator

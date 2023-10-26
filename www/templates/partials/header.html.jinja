@@ -3,10 +3,30 @@
         <picture>
             <source srcset="/img/player.webp" />
             <source srcset="/img/player.gif" />
-            <img src="/img/player.gif" />
+            <img id="logo" src="/img/player.gif" />
         </picture>
     </a>
 </div>
+
+<script type="text/javascript">
+var logo = document.getElementById("logo");
+var flippedX = false;
+document.addEventListener("mousemove", function(e) {
+    var rect = logo.getBoundingClientRect();
+    var centerX = rect.left + (rect.width * 0.5);
+    var flipX = e.clientX < centerX;
+
+    if (flipX != flippedX) {
+        flippedX = flipX;
+
+        if (flipX) {
+            logo.classList.add("flip-x");
+        } else {
+            logo.classList.remove("flip-x");
+        }
+    }
+});
+</script>
 
 <div class="title">
     <a href="/" alt="Homepage">Vallentin's Untitled<br>Infinite Survival<br>Game</a>

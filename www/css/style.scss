@@ -64,6 +64,10 @@ a {
     &:focus {
         text-decoration: underline;
     }
+
+    &[href=""] {
+        color: #f00;
+    }
 }
 
 strong {

@@ -11,8 +11,12 @@
             <div class="dots"></div>
         </div>
 
-        {{ self.post.render()|safe }}
+        <div class="post-content">
+            {{ self.post.render()|safe }}
+        </div>
     </div>
+
+    <hr />
 
     <p class="text"><a href="/blog">See all posts</a></p>
 {% endblock %}

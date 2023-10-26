@@ -1,6 +1,13 @@
 @import "reset";
 
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+@mixin medium-screen {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
 
 @mixin small-screen {
     @media screen and (max-width: 650px) {
@@ -67,6 +74,10 @@ em {
     font-style: italic;
 }
 
+ul > li {
+    list-style-type: disc;
+}
+
 img,
 video {
     width: auto;
@@ -80,11 +91,23 @@ img {
     image-rendering: pixelated;
 }
 
+%dotted-line {
+    border: 0 dotted #252628;
+    border-bottom-width: 3px;
+}
+
+hr {
+    @extend %dotted-line;
+
+    margin: 2rem 0;
+    margin-bottom: calc(2rem - 3px);
+}
+
 .container {
     // Minimum height to ensure the background extends the whole height of the window
     min-height: 100%;
     // Pad the sizes at least, to avoid the content intersecting with the background
-    padding: 32px 96px 96px;
+    padding: 32px 96px;
 
     text-align: center;
 
@@ -106,6 +129,20 @@ img {
             --bg-lhs-pos-x: -#{$offset};
             --bg-rhs-pos-x: calc(100% + #{$offset});
         }
+    }
+
+    @include medium-screen() {
+        $offset: 330px;
+        --bg-lhs-pos-x: -#{$offset};
+        --bg-rhs-pos-x: calc(100% + #{$offset});
+
+        padding: 32px 64px 96px;
+    }
+
+    @include small-screen() {
+        padding: 32px 16px;
+
+        background-image: none, none;
     }
 
     background-image: url("/img/bg-left.png"), url("/img/bg-right.png");
@@ -155,7 +192,6 @@ img {
 
     .text,
     .text-medium {
-        max-width: 70%;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 1.25rem;
@@ -163,6 +199,10 @@ img {
         @include small-screen {
             max-width: 90%;
         }
+    }
+
+    .text {
+        max-width: 70%;
     }
 
     .text-medium {
@@ -244,7 +284,8 @@ img {
         margin-bottom: 2.5rem;
 
         ul {
-            max-width: 70%;
+            max-width: 90%;
+            max-width: calc(min(90%, 700px));
             margin: 1.5rem auto;
 
             display: flex;
@@ -266,34 +307,34 @@ img {
                 // grid-template-columns: auto 1fr auto;
                 // grid-template-columns: max-content 1fr max-content;
 
-                @include small-screen {
-                    flex-direction: column;
-                    gap: 0.25rem;
-                }
+                // @include small-screen {
+                //     flex-direction: column;
+                //     gap: 0.25rem;
+                // }
 
                 a {
+                    max-width: 60%;
+
                     flex: none;
+
+                    text-align: left;
+
+                    overflow-wrap: break-word;
+                    hyphens: auto;
                 }
 
                 .dots {
+                    @extend %dotted-line;
+
                     width: 100%;
-
-                    border: 0 dotted #252628;
-                    border-bottom-width: 3px;
-
-                    @include small-screen {
-                        display: none;
-                    }
                 }
 
                 time {
                     flex: none;
 
-                    color: #7c7f83;
+                    font-size: 0.85rem;
 
-                    @include small-screen {
-                        font-size: 0.75rem;
-                    }
+                    color: #7c7f83;
                 }
             }
         }
@@ -304,9 +345,9 @@ img {
 
         text-align: left;
 
-        color: #ddd;
+        color: #eee;
 
-        @include small-screen {
+        @include medium-screen() {
             padding: 0;
 
             font-size: 1rem;
@@ -326,7 +367,7 @@ img {
         }
 
         .post-date {
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
 
             display: flex;
             flex-direction: row;
@@ -337,15 +378,12 @@ img {
 
             @include small-screen {
                 gap: 0.5rem;
-
-                font-size: 0.75rem;
             }
 
             .dots {
-                flex: 1;
+                @extend %dotted-line;
 
-                border: 0 dotted #252628;
-                border-bottom-width: 3px;
+                flex: 1;
             }
 
             time {
@@ -355,13 +393,35 @@ img {
             }
         }
 
+        .post-content {
+            font-family: "Titillium Web", sans-serif;
+        }
+
         h1:first-child {
             margin-top: 0;
-            margin-bottom: 1.5rem;
 
             font-size: 2rem;
             font-weight: 600;
             line-height: 1.25;
+        }
+
+        p,
+        ul,
+        ol,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 1.5rem;
+        }
+
+        ul,
+        ol {
+            & > li {
+                margin-left: 1.25rem;
+            }
         }
     }
 }

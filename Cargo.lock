@@ -84,7 +84,9 @@ dependencies = [
  "chrono",
  "itertools",
  "matter",
+ "once_cell",
  "pulldown-cmark",
+ "regex",
  "serde",
  "serde_yaml",
 ]

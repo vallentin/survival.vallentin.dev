@@ -23,6 +23,8 @@ pub struct PostMeta {
     pub pinned: bool,
     #[serde(default)]
     pub draft: bool,
+    #[serde(default)]
+    pub links: Vec<String>,
 }
 
 #[derive(Clone, Debug)]

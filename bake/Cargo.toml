@@ -8,6 +8,8 @@ askama = "0.12"
 chrono = { version = "0.4", features = ["serde"] }
 itertools = "0.11"
 matter = { git = "https://github.com/vallentin/matter" }
+once_cell = "1.18"
 pulldown-cmark = "0.9"
+regex = "1.10"
 serde = { version = "1.0", features = ["derive"] }
 serde_yaml = "0.9"

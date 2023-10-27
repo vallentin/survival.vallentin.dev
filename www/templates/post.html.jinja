@@ -13,10 +13,17 @@
 
         <div class="post-content">
             {{ self.post.render()|safe }}
+
+            {% if !self.links.is_empty() %}
+                <div class="post-links">
+                    {% for link in self.links %}
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <hr />
+            <p class="post-backlink"><a href="/blog">See all posts</a></p>
         </div>
     </div>
-
-    <hr />
-
-    <p class="text"><a href="/blog">See all posts</a></p>
 {% endblock %}

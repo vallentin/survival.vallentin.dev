@@ -4,7 +4,11 @@ pub mod prelude {
     pub use super::{BlogPage, IndexPage, PostPage};
 }
 
+use std::borrow::Cow;
+
 use askama::Template;
+use once_cell::sync::Lazy;
+use regex::Regex;
 
 use crate::post::Post;
 
@@ -57,6 +61,7 @@ impl<'a> BlogPage<'a> {
 pub struct PostPage<'a> {
     title: Option<&'a str>,
     post: &'a Post,
+    links: Vec<SocialLink<'a>>,
 }
 
 impl<'a> PostPage<'a> {
@@ -64,6 +69,43 @@ impl<'a> PostPage<'a> {
         Self {
             title: Some(&post.meta.title),
             post,
+            links: post
+                .meta
+                .links
+                .iter()
+                .map(|link| SocialLink::from_url(link))
+                .collect(),
         }
+    }
+}
+
+#[derive(Clone, Debug)]
+struct SocialLink<'a> {
+    url: &'a str,
+    title: Cow<'static, str>,
+}
+
+impl<'a> SocialLink<'a> {
+    fn from_url(url: &'a str) -> Self {
+        let title = match () {
+            _ if url.contains("reddit.com") => {
+                static RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"/r/(.*?)/").unwrap());
+
+                let title = match RE.captures(url) {
+                    Some(caps) => {
+                        let subreddit_name = caps.get(1).unwrap().as_str();
+                        Cow::Owned(format!("Reddit (/r/{})", subreddit_name))
+                    }
+                    None => Cow::Borrowed("Reddit"),
+                };
+
+                title
+            }
+            _ if url.contains("twitter.com") || url.contains("x.com") => Cow::Borrowed("Twitter/X"),
+            _ if url.contains("discord.com") => Cow::Borrowed("Discord"),
+            _ => unimplemented!("{:?} is not supported", url),
+        };
+
+        Self { url, title }
     }
 }

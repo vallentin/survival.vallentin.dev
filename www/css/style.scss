@@ -396,6 +396,28 @@ hr {
             font-family: "Titillium Web", sans-serif;
         }
 
+        .post-links {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+
+            a {
+                font-size: 1.3rem;
+
+                @include medium-screen() {
+                    font-size: 1.1rem;
+                }
+            }
+        }
+
+        .post-backlink {
+            text-align: center;
+        }
+
         h1:first-child {
             margin-top: 0;
 

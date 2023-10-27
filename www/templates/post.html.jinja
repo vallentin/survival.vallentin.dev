@@ -1,4 +1,18 @@
 {% extends "page.html.jinja" %}
+{% block meta %}
+    {% let permalink = "https://survival.vallentin.dev/blog/{}"|format(post.name) %}
+
+    <meta property="og:title" content="{{ post.meta.title }} &middot; Vallentin's Untitled Infinite Survival Game" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vallentin's Untitled Infinite Survival Game" />
+    <meta property="og:url" content="{{ permalink }}" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@VallentinDev" />
+    <meta name="twitter:creator" content="@VallentinDev" />
+
+    <link rel="canonical" href="{{ permalink }}" />
+{% endblock %}
 {% block content %}
     <div class="post">
         <div class="post-title">{{ post.meta.title }}</div>

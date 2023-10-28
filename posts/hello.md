@@ -2,6 +2,8 @@
 title: Hello DevLog
 published: 2023-10-28
 links:
+- https://www.reddit.com/r/rust_gamedev/comments/17ik0in/two_months_later_and_ive_created_a_devlog_for_my/
+- https://twitter.com/VallentinDev/status/1718332444628197492
 - https://discord.gg/Ev8me66KCq
 social-image: /img/2023-10-28-world.png
 ---

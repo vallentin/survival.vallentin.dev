@@ -11,6 +11,13 @@
     <meta name="twitter:site" content="@VallentinDev" />
     <meta name="twitter:creator" content="@VallentinDev" />
 
+    {% match self.post.meta.social_image %}
+        {% when Some with (url) %}
+            <meta property="og:image" content="{{ url }}" />
+            <meta name="twitter:image" content="{{ url }}">
+        {% else %}
+    {% endmatch %}
+
     <link rel="canonical" href="{{ permalink }}" />
 {% endblock %}
 {% block content %}

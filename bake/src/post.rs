@@ -13,6 +13,7 @@ use serde::Deserialize;
 use crate::md;
 
 #[derive(Deserialize, Clone, Debug)]
+#[serde(rename_all = "kebab-case")]
 #[serde(deny_unknown_fields)]
 pub struct PostMeta {
     pub title: String,
@@ -25,6 +26,7 @@ pub struct PostMeta {
     pub draft: bool,
     #[serde(default)]
     pub links: Vec<String>,
+    pub social_image: Option<String>,
 }
 
 #[derive(Clone, Debug)]
@@ -45,7 +47,7 @@ impl Post {
         let yaml = yaml.ok_or_else::<Box<dyn error::Error>, _>(|| {
             format!("missing meta in `{}`", path.display()).into()
         })?;
-        let meta: PostMeta = serde_yaml::from_str(yaml)?;
+        let mut meta: PostMeta = serde_yaml::from_str(yaml)?;
 
         let name = path
             .file_stem()
@@ -55,6 +57,12 @@ impl Post {
             // Safe to unwrap as `path` is guaranteed to be valid UTF-8
             .unwrap()
             .to_owned();
+
+        if let Some(url) = &mut meta.social_image {
+            if url.starts_with('/') {
+                *url = format!("{}{}", crate::DOMAIN, url);
+            }
+        }
 
         Ok(Self {
             meta,

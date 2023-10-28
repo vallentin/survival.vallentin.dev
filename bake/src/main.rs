@@ -22,6 +22,8 @@ use std::process::exit;
 use crate::post::prelude::*;
 use crate::templates::prelude::*;
 
+pub const DOMAIN: &str = "https://survival.vallentin.dev";
+
 fn main() {
     exit({
         let code = match try_main() {

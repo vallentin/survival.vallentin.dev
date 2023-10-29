@@ -77,7 +77,7 @@ _(as well as the first image of this post)_
 
 -----
 
-This is the first devlog post in a series of posts, that I plan to release every other Saturday. Since I have worked on the game for now 3 months, then I felt it was time for a devlog. I plan share information about the game and the process of making it.
+This is the first devlog post in a series of posts, that I plan to release every other Saturday. Since I have worked on the game for now 3 months, then I felt it was time for a devlog. I plan to share information about the game and the process of making it.
 
 This post was more of an introductory to the game itself. I'm still considering how technical future devlogs should be. Whether they should just cover the latest news and changes. Inversely some might be interested in actual development, behind the scenes, and code snippets. I will try out stuff based on feedback, or otherwise let the devlog evolve organically.
 

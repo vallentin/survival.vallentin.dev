@@ -51,7 +51,7 @@ There's a handful of base aspects I love in games, which this game includes:
 
 I've tried a lot of games, and so far none seem to satisfy my itch for all those aspects in a single game.
 
-Conceptually, I've already implemented and tested the main aspects. The game is implemented in Rust, with a custom engine that can easily render [400 million tiles](https://twitter.com/VallentinDev/status/1695410986944016883), as well as handle [10,000 enemies](https://twitter.com/VallentinDev/status/1697266492700770318) on screen.
+Conceptually, I've already implemented and tested the main aspects. The game is implemented in Rust, with a custom engine that can easily render [400 million tiles](https://twitter.com/VallentinDev/status/1695410986944016883), as well as simulating [10,000 enemies](https://twitter.com/VallentinDev/status/1697266492700770318) interacting with each other.
 
 ![](/vid/2023-08-23-161129.mp4)
 

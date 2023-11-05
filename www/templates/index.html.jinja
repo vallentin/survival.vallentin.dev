@@ -2,7 +2,19 @@
 {% block content %}
     {% include "partials/posts.html.jinja" %}
 
-    <p class="text note">
+    <div class="latest-screenshot">
+        <p class="title">
+            <span>Latest Screenshot</span>
+            <span class="dots"></span>
+            <span class="fade-text">November 2023</span>
+        </p>
+        <p class="has-img">
+            <img src="/img/20231105_155243.png" alt="">
+            <a href="/img/20231105_155243.png">(Click here for fullscreen image)</a>
+        </p>
+    </div>
+
+    <p class="text note" style="padding: 1.5rem 0 2.5rem">
         <strong>Note:</strong> Most graphics are placeholder "programmer art", and are subject to change
         over time.
     </p>

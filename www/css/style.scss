@@ -444,33 +444,95 @@ hr {
                 margin-left: 1.25rem;
             }
         }
+    }
 
-        p.has-img {
-            margin-top: 2.5rem;
-            margin-bottom: 2.5rem;
+    img,
+    video {
+        filter: drop-shadow(0 0 0.5rem #000);
+    }
+
+    p.has-img {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+
+        font-size: 1rem;
+        font-style: italic;
+        text-align: center;
+
+        @include medium-screen() {
+            font-size: 0.8rem;
+        }
+
+        img,
+        video {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .latest-screenshot {
+        margin-bottom: 2rem;
+
+        p,
+        img {
+            margin: 0;
+        }
+
+        p {
+            padding: 0.5rem 0;
+
+            &.title {
+                padding-left: 2rem;
+                padding-right: 2rem;
+                text-align: left;
+            }
+        }
+
+        .title {
+            max-width: 70%;
+            margin: 0 auto;
+            padding-bottom: 0.5rem;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
 
             font-size: 1rem;
-            font-style: italic;
-            text-align: center;
+            font-weight: 400;
+            line-height: 1;
 
-            @include medium-screen() {
-                font-size: 0.8rem;
+            @include small-screen {
+                flex-direction: column;
+                gap: 0.25rem;
             }
 
-            img,
-            video {
-                margin-top: 0.5rem;
-                margin-bottom: 0.5rem;
+            span {
+                margin: 0.5rem 0;
+
+                flex: none;
+
+                @include small-screen {
+                    margin: 0.25rem 0;
+                }
+            }
+
+            .dots {
+                @extend %dotted-line;
+
+                width: 100%;
+                flex: 1;
+
+                @include small-screen {
+                    display: none;
+                }
             }
         }
     }
 
-    .post .post-content,
-    .row .media {
-        img,
-        video {
-            filter: drop-shadow(0 0 0.5rem #000);
-        }
+    .fade-text {
+        font-size: 0.85rem;
+        color: #7c7f83;
     }
 }
 

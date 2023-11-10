@@ -102,6 +102,7 @@ impl<'a> SocialLink<'a> {
                 title
             }
             _ if url.contains("twitter.com") || url.contains("x.com") => Cow::Borrowed("Twitter/X"),
+            _ if url.contains("mastodon") => Cow::Borrowed("Mastodon"),
             _ if url.contains("discord.com") || url.contains("discord.gg") => {
                 Cow::Borrowed("Discord")
             }

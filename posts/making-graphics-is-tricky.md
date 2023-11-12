@@ -71,7 +71,7 @@ Additionally, instead of just rotating sprites. I really want animations, where 
 
 For instance, back on the [12th of August][tweet-chop-trees] I made some very crude falling tree animations. Technically, in that same clip, shearing is also applied to the shadows. However, I did say minimal use of rotation and shearing, not no use rotation or shearing at all. In the case of shadows, it seemed fitting, without creating any jarring results.
 
-![](/vid/2023-08-12-212742.mp4)
+![](/vid/2023-11-11/2023-08-12-212742.mp4)
 [12th of August][tweet-chop-trees]
 
 [tweet-chop-trees]: https://twitter.com/VallentinDev/status/1690446699343265793

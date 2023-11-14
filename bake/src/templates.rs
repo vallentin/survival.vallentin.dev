@@ -94,17 +94,19 @@ impl<'a> SocialLink<'a> {
                 let title = match RE.captures(url) {
                     Some(caps) => {
                         let subreddit_name = caps.get(1).unwrap().as_str();
-                        Cow::Owned(format!("Reddit (/r/{})", subreddit_name))
+                        Cow::Owned(format!("Discuss on Reddit (/r/{})", subreddit_name))
                     }
-                    None => Cow::Borrowed("Reddit"),
+                    None => Cow::Borrowed("Discuss on Reddit"),
                 };
 
                 title
             }
-            _ if url.contains("twitter.com") || url.contains("x.com") => Cow::Borrowed("Twitter/X"),
-            _ if url.contains("mastodon") => Cow::Borrowed("Mastodon"),
+            _ if url.contains("twitter.com") || url.contains("x.com") => {
+                Cow::Borrowed("Comment on Twitter/X")
+            }
+            _ if url.contains("mastodon") => Cow::Borrowed("Comment on Mastodon"),
             _ if url.contains("discord.com") || url.contains("discord.gg") => {
-                Cow::Borrowed("Discord")
+                Cow::Borrowed("Chat on Discord")
             }
             _ => unimplemented!("{:?} is not supported", url),
         };

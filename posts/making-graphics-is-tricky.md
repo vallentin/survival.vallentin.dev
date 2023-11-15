@@ -86,13 +86,33 @@ In the end, these requirements are overall completely fluid and simply guideline
 
 Now, is any of this is going to be true in a month or half a year? Who knows.
 
+All in all, I'm experimenting with the graphics until I'm able to fulfill the aesthetic I have in mind, and I will keep iterating on it until it feels right.
+
+![](/img/2023-11-11/cars.png)
+9th of September vs 10th of October
+
+While making all the graphics so far, has been quite the rollercoaster, given that I'm continuously discarding and remaking a lot of it. In reality, while it's really time-consuming going back-and-forth a lot. I don't consider it a waste of time, as I'd prefer to keep remaking the graphics, until I finally reach the sweet spot.
+
+-----
+
+I have considered more and more making technical posts as well. Besides just sharing news and changes of the game. I also want to share more technical details, about how some of the inner workings of the game is implemented.
+
+Here's a few topics I have considered turning into posts:
+
+- Rendering millions of tiles in real-time
+- Procedural world generation - _i.e. using noise and pseudo randomness to generate different biomes, rivers, placing trees and other entities, etc._
+- Randomly generated buildings with random rooms and interiors
+- Generating cities and roads in an infinite world
+
+These posts will of course be written in relation to the game, and how those things are being done in the game.
+
+_I even started writing on some of them._
+
 -----
 
 In other social media related news, besides posting on [Reddit (/u/VallentinDev)][Reddit], [Twitter/X (@VallentinDev)][Twitter], and [Discord][Discord]. I now also post on [Mastodon][Mastodon], [Tumblr][Tumblr], and [Game Jolt][GameJolt].
 
-Currently, I most frequently post on **Twitter/X**, which I mirror on **Mastodon** as well. I also frequently post stuff on the **Discord server** I created for the game.
-
-Overall, I'm most likely not posting every tiny update to Reddit, as I don't want to spam subreddits, with needlessly little things.
+Currently, I most frequently post on Twitter/X, which I mirror on Mastodon as well. I also frequently post random clips and screenshots on the Discord server I created for the game.
 
 [Reddit]: https://www.reddit.com/user/VallentinDev/submitted/
 [Twitter]: https://twitter.com/VallentinDev

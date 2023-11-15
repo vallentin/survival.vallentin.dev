@@ -2,8 +2,8 @@
 title: Making graphics is tricky
 published: 2023-11-11
 links:
-- https://twitter.com/VallentinDev
-- https://mastodon.gamedev.place/@vallentin
+- https://twitter.com/VallentinDev/status/1724688301217460630
+- https://mastodon.gamedev.place/@vallentin/111413348775249339
 - https://discord.gg/Ev8me66KCq
 social-image: /img/20231105_155243.png
 ---

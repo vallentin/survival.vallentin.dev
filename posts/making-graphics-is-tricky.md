@@ -53,7 +53,7 @@ This is where the tricky part comes in. If we want to follow both requirements, 
 
 If the smallest thing in the game is the player character, then we _could_ make a character who is 5x10 pixels. However, if we then later want to make a bird which follows proper proportions, then we might only have one-third or one-fourth of the player height to make that bird. This would get even worse, if we later wanted to make a mouse as well, as we'd likely only have 1 or 2 pixels to represent it with. _While that could work for some art styles, I want each sprite to be more discernible by themselves._
 
-Even after that, picking a small thing as a baseline, say as a bird. Those birds can be made using a few pixels, or a bit more detailed. All in all, this is quite tricky. Especially, given that my experience with pixel art is quite limited. I do however, have a certain look look and feel in my head, that I'm going for. Overall I'm going for a more dystopian, nitty-gritty, and desaturated style. However, when it comes to the sizes of everything, I'm currently trying different sizes to see what speaks the most to me.
+Even after that, picking a small thing as a baseline, say as a bird. Those birds can be made using a few pixels, or a bit more detailed. All in all, this is quite tricky. Especially, given that my experience with pixel art is quite limited. I do however, have a certain look and feel in my head, that I'm going for. Overall I'm going for a more dystopian, nitty-gritty, and desaturated style. However, when it comes to the sizes of everything, I'm currently trying different sizes to see what speaks the most to me.
 
 Talking about birds, I made a few the other day!
 

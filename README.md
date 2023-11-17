@@ -5,7 +5,7 @@
     </picture>
 </div>
 
-# Website for Vallentin's Untitled Infinite Survival Game
+# Website for Vallentin's Untitled Survival Game
 
 Visit [survival.vallentin.dev](https://survival.vallentin.dev) for the online version.
 

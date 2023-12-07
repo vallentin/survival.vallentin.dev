@@ -7,6 +7,9 @@
     <meta property="og:site_name" content="Vallentin's Untitled Survival Game" />
     <meta property="og:url" content="{{ permalink }}" />
 
+    {% let published = post.meta.published.format("%Y-%m-%d") %}
+    <meta property="og:published_time" content="{{ published }}" />
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@VallentinDev" />
     <meta name="twitter:creator" content="@VallentinDev" />
